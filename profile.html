@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Profil pengguna Smart Locker">
+    <meta name="theme-color" content="#1E3C72">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="shared-optimizations.css?v=1.0">
+    <title>Smart Locker - Profile</title>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="particles-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Profile Header Card -->
+        <div class="profile-header-card">
+            <button class="back-btn" onclick="window.location.href='dashboard.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+
+            <!-- Edit Profile Button - Top Right -->
+            <button id="editProfileBtn" class="header-action-btn"
+                style="position: absolute; top: 20px; right: 20px; width: 45px; height: 45px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(10px);"
+                title="Edit Profil">
+                <i class="fas fa-pen"></i>
+            </button>
+
+            <div class="profile-avatar-section">
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="edit-avatar-btn">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <h1 class="profile-name" id="profileName">User Name</h1>
+                <div class="profile-badge">
+                    <i class="fas fa-id-card"></i>
+                    <span id="profileNim">NIM: -</span>
+                </div>
+                <div class="member-since">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span id="memberSince">Member sejak...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="quick-stats">
+            <div class="quick-stat-item">
+                <div class="stat-circle">
+                    <span class="stat-num" id="usageCount">0</span>
+                </div>
+                <span class="stat-text">Penggunaan</span>
+            </div>
+            <div class="quick-stat-item">
+                <div class="stat-circle">
+                    <span class="stat-num" id="totalHours">0</span>
+                </div>
+                <span class="stat-text">Total Jam</span>
+            </div>
+            <div class="quick-stat-item">
+                <div class="stat-circle">
+                    <span class="stat-num" id="favoriteLocker">-</span>
+                </div>
+                <span class="stat-text">Loker Favorit</span>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <div class="section-header">
+                <h2><i class="fas fa-user-circle"></i> Informasi Pribadi</h2>
+            </div>
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon blue">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <span class="info-label">Email</span>
+                        <span class="info-value" id="profileEmail">user@email.com</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon purple">
+                        <i class="fas fa-id-badge"></i>
+                    </div>
+                    <div class="info-content">
+                        <span class="info-label">NIM</span>
+                        <span class="info-value" id="profileNimDetail">-</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="info-content">
+                        <span class="info-label">Status Akun</span>
+                        <span class="info-value status-active">Aktif</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Stats Section -->
+        <div class="info-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-pie"></i> Statistik Penggunaan</h2>
+            </div>
+            <div class="usage-stats">
+                <div class="usage-stat-item">
+                    <div class="usage-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="usage-details">
+                        <span class="usage-label">Total Penggunaan</span>
+                        <span class="usage-value" id="usageCountDetail">0 kali</span>
+                    </div>
+                </div>
+                <div class="usage-stat-item">
+                    <div class="usage-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="usage-details">
+                        <span class="usage-label">Total Durasi</span>
+                        <span class="usage-value" id="totalHoursDetail">0 jam</span>
+                    </div>
+                </div>
+                <div class="usage-stat-item">
+                    <div class="usage-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="usage-details">
+                        <span class="usage-label">Loker Favorit</span>
+                        <span class="usage-value" id="favoriteLockerDetail">-</span>
+                    </div>
+                </div>
+                <div class="usage-stat-item">
+                    <div class="usage-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="usage-details">
+                        <span class="usage-label">Terakhir Digunakan</span>
+                        <span class="usage-value" id="lastUsedDate">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-section">
+            <button class="action-btn primary" onclick="window.location.href='card-sync.html'">
+                <i class="fas fa-id-card"></i>
+                <span>Sinkron Kartu</span>
+            </button>
+            <button class="action-btn secondary" onclick="window.location.href='forgot-password.html'">
+                <i class="fas fa-key"></i>
+                <span>Ganti Password</span>
+            </button>
+            <button class="action-btn danger" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+            <button class="action-btn" id="deleteAccountBtn"
+                style="background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; border: none; margin-top: 10px;">
+                <i class="fas fa-trash-alt"></i>
+                <span>Hapus Akun</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal - Inline Styles for Reliability -->
+    <div id="editProfileModal"
+        style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 99999; align-items: center; justify-content: center; padding: 20px;">
+        <div id="modalContent"
+            style="background: #ffffff; border-radius: 24px; width: 100%; max-width: 400px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);">
+
+            <!-- Header -->
+            <div
+                style="background: linear-gradient(135deg, #1E3C72, #2A5298, #36D1DC); padding: 30px 24px 50px; text-align: center; position: relative; border-radius: 24px 24px 0 0;">
+                <!-- Close Button -->
+                <button id="closeEditModal" type="button"
+                    style="position: absolute; top: 15px; right: 15px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- Avatar -->
+                <div id="photoPreview"
+                    style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #5B86E5, #36D1DC); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; border: 4px solid white; box-shadow: 0 8px 25px rgba(0,0,0,0.2); position: relative; overflow: hidden;">
+                    <i class="fas fa-user" id="avatarIcon" style="z-index: 1;"></i>
+                    <img src="" id="previewImg"
+                        style="display: none; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                </div>
+                <label for="photoInput"
+                    style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: rgba(255,255,255,0.2); border-radius: 20px; color: white; font-size: 13px; cursor: pointer; transition: all 0.3s;">
+                    <i class="fas fa-camera"></i> Ganti Foto
+                </label>
+                <input type="file" id="photoInput" accept="image/*" hidden>
+
+                <h3 style="font-size: 24px; font-weight: 700; color: white; margin: 15px 0 5px;">Edit Profil</h3>
+                <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin: 0;">Perbarui informasi akun Anda</p>
+            </div>
+
+            <!-- Form -->
+            <form id="editProfileForm"
+                style="padding: 24px; margin-top: -25px; border-radius: 24px 24px 0 0; position: relative;">
+
+                <!-- Name Field -->
+                <div style="margin-bottom: 20px;">
+                    <label id="labelName"
+                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">
+                        <i class="fas fa-user" style="color: #5B86E5; margin-right: 8px;"></i>Nama Lengkap
+                    </label>
+                    <input type="text" id="editName" placeholder="Masukkan nama lengkap" required
+                        style="width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 15px; outline: none; transition: all 0.3s; box-sizing: border-box;">
+                </div>
+
+                <!-- Email Field -->
+                <div style="margin-bottom: 20px;">
+                    <label id="labelEmail"
+                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px;">
+                        <i class="fas fa-envelope" style="color: #5B86E5; margin-right: 8px;"></i>Email
+                    </label>
+                    <input type="email" id="editEmail" placeholder="Masukkan email" required
+                        style="width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 15px; outline: none; transition: all 0.3s; box-sizing: border-box;">
+                </div>
+
+                <!-- NIM Field -->
+                <div style="margin-bottom: 20px;">
+                    <label
+                        style="display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 8px;">
+                        <i class="fas fa-id-badge" style="color: #94a3b8; margin-right: 8px;"></i>NIM
+                        <i class="fas fa-lock" style="margin-left: 6px; font-size: 10px;"></i>
+                    </label>
+                    <input type="text" id="editNim" disabled
+                        style="width: 100%; padding: 14px 16px; border: 2px solid #f1f5f9; border-radius: 12px; font-size: 15px; color: #94a3b8; background: #f1f5f9; cursor: not-allowed; box-sizing: border-box;">
+                    <p style="font-size: 11px; color: #94a3b8; margin: 6px 0 0;">
+                        <i class="fas fa-info-circle"></i> NIM tidak dapat diubah
+                    </p>
+                </div>
+
+                <!-- Remove Photo -->
+                <button type="button" id="removePhotoBtn"
+                    style="display: none; width: 100%; padding: 12px; background: rgba(239, 68, 68, 0.1); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; font-size: 13px; font-weight: 500; cursor: pointer; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px;">
+                    <i class="fas fa-trash-alt"></i> Hapus Foto
+                </button>
+
+                <!-- Buttons -->
+                <div style="display: flex; gap: 12px; margin-top: 10px;">
+                    <button type="button" id="cancelEditBtn"
+                        style="flex: 1; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s;">
+                        Batal
+                    </button>
+                    <button type="submit" id="saveProfileBtn"
+                        style="flex: 1.5; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; background: linear-gradient(135deg, #5B86E5, #36D1DC); color: white; border: none; box-shadow: 0 4px 15px rgba(91, 134, 229, 0.4); transition: all 0.3s;">
+                        <i class="fas fa-check"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div id="deleteAccountModal"
+        style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 99999; align-items: center; justify-content: center; padding: 20px;">
+        <div id="deleteModalContent"
+            style="background: #ffffff; border-radius: 24px; width: 100%; max-width: 400px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);">
+
+            <!-- Header -->
+            <div
+                style="background: linear-gradient(135deg, #dc2626, #b91c1c); padding: 30px 24px 50px; text-align: center; position: relative; border-radius: 24px 24px 0 0;">
+                <!-- Close Button -->
+                <button id="closeDeleteModal" type="button"
+                    style="position: absolute; top: 15px; right: 15px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- Warning Icon -->
+                <div
+                    style="width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.2); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; border: 4px solid rgba(255,255,255,0.3);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+
+                <h3 style="font-size: 24px; font-weight: 700; color: white; margin: 15px 0 5px;">Hapus Akun</h3>
+                <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin: 0;">Tindakan ini tidak dapat dibatalkan
+                </p>
+            </div>
+
+            <!-- Form -->
+            <form id="deleteAccountForm"
+                style="padding: 24px; margin-top: -25px; border-radius: 24px 24px 0 0; position: relative;">
+
+                <!-- Warning Message -->
+                <div id="deleteWarningBox"
+                    style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+                    <p style="font-size: 13px; color: #dc2626; margin: 0; line-height: 1.5;">
+                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                        Semua data Anda akan dihapus secara permanen termasuk riwayat penggunaan loker.
+                    </p>
+                </div>
+
+                <!-- Error Message (hidden by default) -->
+                <div id="deleteErrorBox"
+                    style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid #dc2626; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+                    <p id="deleteErrorMessage" style="font-size: 13px; color: #dc2626; margin: 0; line-height: 1.5;">
+                        <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>
+                        <span></span>
+                    </p>
+                </div>
+
+                <!-- Password Field -->
+                <div style="margin-bottom: 20px;">
+                    <label id="labelDeletePassword"
+                        style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #334155;">
+                        <i class="fas fa-lock" style="color: #dc2626; margin-right: 8px;"></i>Konfirmasi Password
+                    </label>
+                    <input type="password" id="deletePassword" placeholder="Masukkan password Anda" required
+                        style="width: 100%; padding: 14px 16px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 15px; outline: none; transition: all 0.3s; box-sizing: border-box;">
+                </div>
+
+                <!-- Confirmation Checkbox -->
+                <div style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
+                        <input type="checkbox" id="confirmDeleteCheckbox" required
+                            style="width: 20px; height: 20px; margin-top: 2px; cursor: pointer;">
+                        <span id="labelConfirmDelete" style="font-size: 13px; color: #64748b; line-height: 1.4;">
+                            Saya mengerti bahwa semua data saya akan dihapus dan tindakan ini tidak dapat dibatalkan
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Buttons -->
+                <div style="display: flex; gap: 12px; margin-top: 10px;">
+                    <button type="button" id="cancelDeleteBtn"
+                        style="flex: 1; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; background: #f1f5f9; color: #64748b; transition: all 0.3s;">
+                        Batal
+                    </button>
+                    <button type="submit" id="confirmDeleteBtn"
+                        style="flex: 1.5; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; border: none; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4); transition: all 0.3s;">
+                        <i class="fas fa-trash-alt"></i> Hapus Akun
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let selectedPhoto = null;
+
+        // Load user data
+        document.addEventListener('DOMContentLoaded', function () {
+            const sessionUser = sessionStorage.getItem('user');
+            const localUser = localStorage.getItem('user');
+            currentUser = sessionUser ? JSON.parse(sessionUser) : (localUser ? JSON.parse(localUser) : null);
+
+            if (!currentUser) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Update profile info
+            updateProfileDisplay();
+
+            // Load user statistics from API
+            loadUserStats();
+
+            // Load saved photo from localStorage
+            const savedPhoto = localStorage.getItem('userPhoto');
+            if (savedPhoto) {
+                const avatar = document.querySelector('.avatar');
+                avatar.innerHTML = `<img src="${savedPhoto}" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+            }
+
+            // Update theme icon based on current theme
+            function updateThemeIcon() {
+                const themeIcon = document.getElementById('themeIcon');
+                if (themeIcon) {
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+
+            // Initial update
+            setTimeout(updateThemeIcon, 100);
+
+            // Listen for theme changes
+            const observer = new MutationObserver(updateThemeIcon);
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+        });
+
+        function updateProfileDisplay() {
+            document.getElementById('profileName').textContent = currentUser.name || 'User';
+            document.getElementById('profileNim').textContent = `NIM: ${currentUser.nim || '-'}`;
+            document.getElementById('profileEmail').textContent = currentUser.email || '-';
+            document.getElementById('profileNimDetail').textContent = currentUser.nim || '-';
+        }
+
+        // Load user statistics from API
+        async function loadUserStats() {
+            try {
+                const response = await fetch(`/api/user/stats?userId=${currentUser.id}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.stats;
+
+                    // Format member since date
+                    const memberDate = new Date(stats.memberSince);
+                    const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                    const memberSinceText = `Member sejak ${months[memberDate.getMonth()]} ${memberDate.getFullYear()}`;
+                    document.getElementById('memberSince').textContent = memberSinceText;
+
+                    // Update quick stats
+                    document.getElementById('usageCount').textContent = stats.totalUsage || 0;
+                    document.getElementById('totalHours').textContent = stats.totalHours || 0;
+                    document.getElementById('favoriteLocker').textContent = stats.favoriteLocker ? `#${stats.favoriteLocker}` : '-';
+
+                    // Update detailed stats
+                    document.getElementById('usageCountDetail').textContent = `${stats.totalUsage || 0} kali`;
+                    document.getElementById('totalHoursDetail').textContent = `${stats.totalHours || 0} jam`;
+                    document.getElementById('favoriteLockerDetail').textContent = stats.favoriteLocker ? `Loker #${stats.favoriteLocker}` : '-';
+
+                    // Format last used date
+                    if (stats.lastUsed) {
+                        const lastDate = new Date(stats.lastUsed);
+                        const lastUsedText = `${lastDate.getDate()} ${months[lastDate.getMonth()]} ${lastDate.getFullYear()}`;
+                        document.getElementById('lastUsedDate').textContent = lastUsedText;
+                    } else {
+                        document.getElementById('lastUsedDate').textContent = 'Belum pernah';
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading user stats:', error);
+                // Keep default values on error
+            }
+        }
+
+        // ==================== Edit Profile Modal ====================
+        const editProfileModal = document.getElementById('editProfileModal');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const closeEditModal = document.getElementById('closeEditModal');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const editProfileForm = document.getElementById('editProfileForm');
+        const photoInput = document.getElementById('photoInput');
+        const photoPreview = document.getElementById('photoPreview');
+        const previewImg = document.getElementById('previewImg');
+        const removePhotoBtn = document.getElementById('removePhotoBtn');
+
+        // Open modal
+        editProfileBtn.addEventListener('click', function () {
+            // Populate form with current data
+            document.getElementById('editName').value = currentUser.name || '';
+            document.getElementById('editEmail').value = currentUser.email || '';
+            document.getElementById('editNim').value = currentUser.nim || '';
+
+            // Check for existing photo
+            const savedPhoto = localStorage.getItem('userPhoto');
+            if (savedPhoto) {
+                previewImg.src = savedPhoto;
+                previewImg.style.display = 'block';
+                photoPreview.querySelector('i').style.display = 'none';
+                removePhotoBtn.style.display = 'inline-flex';
+            }
+
+            // Apply dark mode styling to modal
+            applyModalTheme();
+
+            // Show modal
+            editProfileModal.style.display = 'flex';
+        });
+
+        // Apply theme to modal based on current data-theme
+        function applyModalTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const modalContent = document.getElementById('modalContent');
+            const form = document.getElementById('editProfileForm');
+            const editName = document.getElementById('editName');
+            const editEmail = document.getElementById('editEmail');
+            const cancelBtn = document.getElementById('cancelEditBtn');
+            const labelName = document.getElementById('labelName');
+            const labelEmail = document.getElementById('labelEmail');
+
+            if (isDark) {
+                // Dark mode styles
+                modalContent.style.background = '#1e293b';
+                form.style.background = '#1e293b';
+                editName.style.background = '#334155';
+                editName.style.borderColor = '#475569';
+                editName.style.color = '#f1f5f9';
+                editEmail.style.background = '#334155';
+                editEmail.style.borderColor = '#475569';
+                editEmail.style.color = '#f1f5f9';
+                cancelBtn.style.background = '#334155';
+                cancelBtn.style.color = '#94a3b8';
+                labelName.style.color = '#cbd5e1';
+                labelEmail.style.color = '#cbd5e1';
+            } else {
+                // Light mode styles
+                modalContent.style.background = '#ffffff';
+                form.style.background = '#ffffff';
+                editName.style.background = '#f8fafc';
+                editName.style.borderColor = '#e2e8f0';
+                editName.style.color = '#1E3C72';
+                editEmail.style.background = '#f8fafc';
+                editEmail.style.borderColor = '#e2e8f0';
+                editEmail.style.color = '#1E3C72';
+                cancelBtn.style.background = '#f1f5f9';
+                cancelBtn.style.color = '#64748b';
+                labelName.style.color = '#334155';
+                labelEmail.style.color = '#334155';
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            editProfileModal.style.display = 'none';
+            selectedPhoto = null;
+        }
+
+        closeEditModal.addEventListener('click', closeModal);
+        cancelEditBtn.addEventListener('click', closeModal);
+        editProfileModal.addEventListener('click', function (e) {
+            if (e.target === editProfileModal) closeModal();
+        });
+
+        // Photo upload handling
+        photoInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+                showToast('Pilih file gambar (JPG, PNG)', 'error');
+                return;
+            }
+
+            // Validate file size (max 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                showToast('Ukuran foto maksimal 2MB', 'error');
+                return;
+            }
+
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                selectedPhoto = event.target.result;
+                previewImg.src = selectedPhoto;
+                previewImg.style.display = 'block';
+                photoPreview.querySelector('i').style.display = 'none';
+                removePhotoBtn.style.display = 'inline-flex';
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Remove photo
+        removePhotoBtn.addEventListener('click', function () {
+            selectedPhoto = null;
+            previewImg.src = '';
+            previewImg.style.display = 'none';
+            photoPreview.querySelector('i').style.display = 'block';
+            removePhotoBtn.style.display = 'none';
+            photoInput.value = '';
+            localStorage.removeItem('userPhoto');
+
+            // Update avatar display
+            const avatar = document.querySelector('.avatar');
+            avatar.innerHTML = '<i class="fas fa-user"></i>';
+        });
+
+        // Camera button on profile header
+        document.querySelector('.edit-avatar-btn').addEventListener('click', function () {
+            editProfileBtn.click();
+        });
+
+        // Save profile
+        editProfileForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const saveBtn = document.getElementById('saveProfileBtn');
+            const newName = document.getElementById('editName').value.trim();
+            const newEmail = document.getElementById('editEmail').value.trim();
+
+            // Validate
+            if (!newName) {
+                showToast('Nama tidak boleh kosong', 'error');
+                return;
+            }
+
+            if (!newEmail || !newEmail.includes('@')) {
+                showToast('Email tidak valid', 'error');
+                return;
+            }
+
+            // Show loading state
+            saveBtn.disabled = true;
+            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+
+            try {
+                // Save photo to localStorage if changed
+                if (selectedPhoto) {
+                    localStorage.setItem('userPhoto', selectedPhoto);
+                    // Update avatar display
+                    const avatar = document.querySelector('.avatar');
+                    avatar.innerHTML = `<img src="${selectedPhoto}" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+                }
+
+                // Update user data via API
+                const response = await fetch('/api/user/update-profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId: currentUser.id,
+                        name: newName,
+                        email: newEmail
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update local storage
+                    currentUser.name = newName;
+                    currentUser.email = newEmail;
+
+                    // Save to storage
+                    if (sessionStorage.getItem('user')) {
+                        sessionStorage.setItem('user', JSON.stringify(currentUser));
+                    }
+                    if (localStorage.getItem('user')) {
+                        localStorage.setItem('user', JSON.stringify(currentUser));
+                    }
+
+                    // Update display
+                    updateProfileDisplay();
+
+                    showToast('Profil berhasil diperbarui!', 'success');
+                    closeModal();
+                } else {
+                    showToast(data.message || 'Gagal memperbarui profil', 'error');
+                }
+            } catch (error) {
+                console.error('Error updating profile:', error);
+
+                // For now, just update locally if API fails
+                currentUser.name = newName;
+                currentUser.email = newEmail;
+
+                if (sessionStorage.getItem('user')) {
+                    sessionStorage.setItem('user', JSON.stringify(currentUser));
+                }
+                if (localStorage.getItem('user')) {
+                    localStorage.setItem('user', JSON.stringify(currentUser));
+                }
+
+                updateProfileDisplay();
+                showToast('Profil berhasil diperbarui!', 'success');
+                closeModal();
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = '<i class="fas fa-check"></i> Simpan';
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
+            localStorage.removeItem('userActiveLocker');
+            localStorage.removeItem('userPhoto');
+            window.location.href = 'index.html';
+        });
+
+        // Toast notification
+        function showToast(message, type = 'info') {
+            let container = document.getElementById('toastContainer');
+
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3500);
+        }
+
+        // ==================== Delete Account Modal ====================
+        const deleteAccountModal = document.getElementById('deleteAccountModal');
+        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+        const closeDeleteModal = document.getElementById('closeDeleteModal');
+        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+        const deleteAccountForm = document.getElementById('deleteAccountForm');
+        const deleteErrorBox = document.getElementById('deleteErrorBox');
+        const deleteErrorMessage = document.getElementById('deleteErrorMessage');
+
+        // Open delete account modal
+        deleteAccountBtn.addEventListener('click', function () {
+            // Reset form
+            document.getElementById('deletePassword').value = '';
+            document.getElementById('confirmDeleteCheckbox').checked = false;
+            deleteErrorBox.style.display = 'none';
+
+            // Apply theme to modal
+            applyDeleteModalTheme();
+
+            // Show modal
+            deleteAccountModal.style.display = 'flex';
+        });
+
+        // Apply theme to delete modal based on current data-theme
+        function applyDeleteModalTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const modalContent = document.getElementById('deleteModalContent');
+            const form = document.getElementById('deleteAccountForm');
+            const passwordInput = document.getElementById('deletePassword');
+            const labelPassword = document.getElementById('labelDeletePassword');
+            const labelConfirm = document.getElementById('labelConfirmDelete');
+            const warningBox = document.getElementById('deleteWarningBox');
+            const cancelBtn = document.getElementById('cancelDeleteBtn');
+
+            if (isDark) {
+                // Dark mode styles
+                modalContent.style.background = '#1e293b';
+                form.style.background = '#1e293b';
+                passwordInput.style.background = '#334155';
+                passwordInput.style.borderColor = '#475569';
+                passwordInput.style.color = '#f1f5f9';
+                labelPassword.style.color = '#cbd5e1';
+                labelConfirm.style.color = '#94a3b8';
+                warningBox.style.background = 'rgba(239, 68, 68, 0.15)';
+                cancelBtn.style.background = '#334155';
+                cancelBtn.style.color = '#94a3b8';
+            } else {
+                // Light mode styles
+                modalContent.style.background = '#ffffff';
+                form.style.background = '#ffffff';
+                passwordInput.style.background = '#f8fafc';
+                passwordInput.style.borderColor = '#e2e8f0';
+                passwordInput.style.color = '#334155';
+                labelPassword.style.color = '#334155';
+                labelConfirm.style.color = '#64748b';
+                warningBox.style.background = 'rgba(239, 68, 68, 0.1)';
+                cancelBtn.style.background = '#f1f5f9';
+                cancelBtn.style.color = '#64748b';
+            }
+        }
+
+        // Close delete modal
+        function closeDeleteAccountModal() {
+            deleteAccountModal.style.display = 'none';
+            document.getElementById('deletePassword').value = '';
+            document.getElementById('confirmDeleteCheckbox').checked = false;
+            deleteErrorBox.style.display = 'none';
+        }
+
+        closeDeleteModal.addEventListener('click', closeDeleteAccountModal);
+        cancelDeleteBtn.addEventListener('click', closeDeleteAccountModal);
+        deleteAccountModal.addEventListener('click', function (e) {
+            if (e.target === deleteAccountModal) closeDeleteAccountModal();
+        });
+
+        // Handle delete account form submission
+        deleteAccountForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const password = document.getElementById('deletePassword').value;
+            const confirmCheckbox = document.getElementById('confirmDeleteCheckbox').checked;
+            const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+            // Validate
+            if (!password) {
+                showDeleteError('Masukkan password Anda untuk konfirmasi');
+                return;
+            }
+
+            if (!confirmCheckbox) {
+                showDeleteError('Anda harus mencentang kotak konfirmasi');
+                return;
+            }
+
+            // Show loading state
+            confirmDeleteBtn.disabled = true;
+            confirmDeleteBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menghapus...';
+            deleteErrorBox.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/user/delete-account', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId: currentUser.id,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Clear all user data
+                    sessionStorage.removeItem('user');
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('userActiveLocker');
+                    localStorage.removeItem('userPhoto');
+
+                    showToast('Akun berhasil dihapus', 'success');
+
+                    // Redirect to login page after short delay
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else {
+                    // Show error message
+                    if (data.hasActiveLocker) {
+                        // Special handling for active locker error
+                        showDeleteError(`${data.message} Loker: ${data.lockerCode}`);
+                    } else {
+                        showDeleteError(data.message || 'Gagal menghapus akun');
+                    }
+                }
+            } catch (error) {
+                console.error('Error deleting account:', error);
+                showDeleteError('Terjadi kesalahan saat menghapus akun. Silakan coba lagi.');
+            } finally {
+                confirmDeleteBtn.disabled = false;
+                confirmDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Hapus Akun';
+            }
+        });
+
+        // Show error in delete modal
+        function showDeleteError(message) {
+            deleteErrorBox.style.display = 'block';
+            deleteErrorMessage.querySelector('span').textContent = message;
+
+            // Scroll to error if needed
+            deleteErrorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+
+</html>

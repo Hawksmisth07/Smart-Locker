@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Smart Locker Dashboard - Kelola loker Anda dengan mudah dan aman">
+    <meta name="theme-color" content="#1E3C72">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Smart Locker">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%231E3C72' width='192' height='192' rx='32'/%3E%3Cpath d='M96 40c-17.7 0-32 14.3-32 32v16H52c-6.6 0-12 5.4-12 12v52c0 6.6 5.4 12 12 12h88c6.6 0 12-5.4 12-12v-52c0-6.6-5.4-12-12-12h-12V72c0-17.7-14.3-32-32-32zm0 16c8.8 0 16 7.2 16 16v16H80V72c0-8.8 7.2-16 16-16zm0 56c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z' fill='%2336D1DC'/%3E%3C/svg%3E">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="theme.css?v=1.0.0">
+    <link rel="stylesheet" href="dashboard.css?v=1.0.0">
+    <link rel="stylesheet" href="shared-optimizations.css?v=1.0.0">
+
+    <title>Smart Locker - Dashboard</title>
+</head>
+
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar Popup -->
+    <div class="sidebar-popup" id="sidebarPopup">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">MENU</h2>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-user-info">
+            <div class="sidebar-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="sidebar-user-details">
+                <span class="sidebar-user-name" id="sidebarUserName">User</span>
+                <span class="sidebar-user-nim" id="sidebarUserNim">NIM</span>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+                <a href="dashboard.html" class="sidebar-menu-link active">
+                    <i class="fas fa-home sidebar-menu-icon"></i>
+                    <span>DASHBOARD</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a href="history.html" class="sidebar-menu-link">
+                    <i class="fas fa-chart-bar sidebar-menu-icon"></i>
+                    <span>RIWAYAT</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a href="profile.html" class="sidebar-menu-link">
+                    <i class="fas fa-user sidebar-menu-icon"></i>
+                    <span>PROFILE</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a href="help.html" class="sidebar-menu-link">
+                    <i class="fas fa-question-circle sidebar-menu-icon"></i>
+                    <span>BANTUAN</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a href="settings.html" class="sidebar-menu-link">
+                    <i class="fas fa-cog sidebar-menu-icon"></i>
+                    <span>PENGATURAN</span>
+                </a>
+            </li>
+            <li class="sidebar-menu-item">
+                <a href="#" class="sidebar-menu-link logout-link" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt sidebar-menu-icon"></i>
+                    <span>LOGOUT</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Header/Navbar -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <div class="three-dots-menu" id="threeDotsMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <a class="container-navbar">
+                <i class="fas fa-lock"></i>
+                SMART LOCKER
+            </a>
+        </div>
+        <ul class="ul-navbar">
+            <li class="li-navbar"><a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li class="li-navbar"><a href="history.html"><i class="fas fa-chart-bar"></i> Riwayat</a></li>
+            <li class="li-navbar"><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li class="li-navbar"><a href="help.html"><i class="fas fa-question-circle"></i> Bantuan</a></li>
+            <li class="li-navbar"><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+        </ul>
+        <div class="navbar-right">
+            <div class="user-menu" id="userMenu">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="user-name" id="navUserName">User</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="user-dropdown" id="userDropdown">
+                <a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a>
+                <a href="#" id="logoutBtnDesktop"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h1>Selamat Datang, <span id="welcomeUserName">User</span>! 👋</h1>
+                    <p>Kelola smart locker Anda dengan mudah dan aman</p>
+                </div>
+                <div class="welcome-time">
+                    <div class="time-display" id="currentTime">00:00</div>
+                    <div class="date-display" id="currentDate">1 Januari 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <div class="quick-action-card" onclick="window.location.href='card-sync.html'">
+                <div class="action-icon rfid">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <span>Kartu RFID</span>
+            </div>
+            <div class="quick-action-card" onclick="window.location.href='history.html'">
+                <div class="action-icon history">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <span>Riwayat</span>
+            </div>
+            <div class="quick-action-card" onclick="window.location.href='profile.html'">
+                <div class="action-icon profile">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <span>Profile</span>
+            </div>
+            <div class="quick-action-card" onclick="window.location.href='help.html'">
+                <div class="action-icon help">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <span>Bantuan</span>
+            </div>
+        </div>
+
+        <!-- Active Locker Card (Show when user has active booking) -->
+        <div class="active-locker-card" id="activeLockerCard" style="display: none;">
+            <div class="active-locker-header">
+                <h3><i class="fas fa-lock-open"></i> Locker Aktif Anda</h3>
+                <span class="active-badge">AKTIF</span>
+            </div>
+            <div class="active-locker-body">
+                <div class="locker-info-big">
+                    <span class="locker-number-big" id="activeLockerNumber">-</span>
+                </div>
+                <div class="locker-details">
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <span class="detail-label">Waktu Mulai</span>
+                            <span class="detail-value" id="startTime">-</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-hourglass-half"></i>
+                        <div>
+                            <span class="detail-label">Durasi</span>
+                            <span class="detail-value" id="duration">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="release-btn" id="releaseBtn">
+                <i class="fas fa-unlock"></i> Kembalikan Locker
+            </button>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-pie"></i>
+                Status Loker
+            </h2>
+            <div class="stats-container">
+                <div class="stat-card total">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="totalCount">10</div>
+                        <div class="stat-label">Total Loker</div>
+                    </div>
+                </div>
+                <div class="stat-card available">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="availableCount">8</div>
+                        <div class="stat-label">Tersedia</div>
+                    </div>
+                </div>
+                <div class="stat-card occupied">
+                    <div class="stat-icon">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="occupiedCount">7</div>
+                        <div class="stat-label">Terisi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Locker Grid Section -->
+        <div class="locker-section">
+            <h2 class="section-title">
+                <i class="fas fa-th"></i>
+                Daftar Loker
+            </h2>
+            <div class="locker-legend">
+                <div class="legend-item">
+                    <div class="legend-color available"></div>
+                    <span>Tersedia</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color occupied"></div>
+                    <span>Terisi</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color yours"></div>
+                    <span>Loker Anda</span>
+                </div>
+            </div>
+            <div class="locker-grid" id="lockerGrid">
+                <!-- Lockers will be generated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Help Modal -->
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal-content help-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> Bantuan</h3>
+                <button class="modal-close" id="closeHelpModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="help-item">
+                    <div class="help-icon"><i class="fas fa-id-card"></i></div>
+                    <div class="help-text">
+                        <h4>Cara Menggunakan Locker</h4>
+                        <p>Tap kartu RFID Anda pada reader untuk membuka locker yang tersedia</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon"><i class="fas fa-unlock"></i></div>
+                    <div class="help-text">
+                        <h4>Kembalikan Locker</h4>
+                        <p>Klik tombol "Kembalikan Locker" pada card locker aktif Anda</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon"><i class="fas fa-clock"></i></div>
+                    <div class="help-text">
+                        <h4>Batas Waktu</h4>
+                        <p>Locker akan otomatis direset setelah 24 jam penggunaan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn confirm" id="closeHelpBtn">Mengerti</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Locker Duration Warning Modal -->
+    <div class="modal-overlay" id="lockerWarningModal">
+        <div class="modal-content warning-modal">
+            <div class="modal-header warning-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> Peringatan Penggunaan</h3>
+                <button class="modal-close" id="closeWarningModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-icon-big" id="warningIconBig">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h2 class="warning-title" id="warningTitle">Durasi Penggunaan Tinggi</h2>
+                <p class="warning-message" id="warningMessage">
+                    Anda sudah menggunakan locker selama waktu yang lama.
+                </p>
+                <div class="warning-stats">
+                    <div class="warning-stat">
+                        <span class="stat-label">Durasi</span>
+                        <span class="stat-value" id="warningDuration">- jam</span>
+                    </div>
+                    <div class="warning-stat">
+                        <span class="stat-label">Sisa Waktu</span>
+                        <span class="stat-value" id="warningRemaining">- jam</span>
+                    </div>
+                </div>
+                <div class="warning-progress-container">
+                    <div class="warning-progress-bar" id="warningProgressBar"></div>
+                </div>
+            </div>
+            <div class="modal-footer warning-footer">
+                <button class="modal-btn continue-btn" id="continueUsingBtn">
+                    <i class="fas fa-check"></i> Lanjutkan
+                </button>
+                <button class="modal-btn release-warning-btn" id="releaseFromWarningBtn">
+                    <i class="fas fa-unlock"></i> Kembalikan Locker
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Socket.IO Client for Real-Time Updates -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="cache-buster.js?v=1.0.0"></script>
+    <script src="theme.js?v=1.0.0"></script>
+    <script src="dashboard.js?v=1.0.0"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+                    .catch(err => console.log('❌ Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>

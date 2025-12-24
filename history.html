@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Riwayat penggunaan Smart Locker Anda">
+    <meta name="theme-color" content="#1E3C72">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="history.css">
+    <link rel="stylesheet" href="shared-optimizations.css?v=1.0">
+    <title>Smart Locker - Riwayat</title>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="particles-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Header -->
+        <header class="page-header">
+            <button class="back-btn" onclick="window.location.href='dashboard.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="page-title">
+                <i class="fas fa-chart-bar"></i>
+                Riwayat Penggunaan
+            </h1>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value" id="historyTotalUsage">0</div>
+                    <div class="stat-label">Total Penggunaan</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value" id="historyTotalHours">0</div>
+                    <div class="stat-label">Total Jam</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value" id="historyActiveDays">0</div>
+                    <div class="stat-label">Hari Aktif</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-value" id="historyAvgHours">0</div>
+                    <div class="stat-label">Rata-rata Jam/Hari</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-area"></i>
+                    Penggunaan 7 Hari Terakhir
+                </h2>
+            </div>
+            <div class="chart-container">
+                <div class="chart-bars" id="chartBars">
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="height: 0%;"><span class="bar-value">0</span></div>
+                        <span class="bar-label">Sen</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="height: 0%;"><span class="bar-value">0</span></div>
+                        <span class="bar-label">Sel</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="height: 0%;"><span class="bar-value">0</span></div>
+                        <span class="bar-label">Rab</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="height: 0%;"><span class="bar-value">0</span></div>
+                        <span class="bar-label">Kam</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="height: 0%;"><span class="bar-value">0</span></div>
+                        <span class="bar-label">Jum</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="height: 0%;"><span class="bar-value">0</span></div>
+                        <span class="bar-label">Sab</span>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar-fill" style="height: 0%;"><span class="bar-value">0</span></div>
+                        <span class="bar-label">Min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Log -->
+        <div class="history-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-history" aria-hidden="true"></i>
+                    Log Aktivitas
+                </h2>
+                <div class="header-actions">
+                    <!-- Search Input -->
+                    <div class="search-box-small">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input type="text" id="historySearch" placeholder="Cari loker..."
+                            aria-label="Cari riwayat penggunaan loker">
+                    </div>
+                    <!-- Export Buttons -->
+                    <div class="export-buttons">
+                        <button id="exportPdfBtn" class="export-btn" aria-label="Export ke PDF">
+                            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                            <span>PDF</span>
+                        </button>
+                        <button id="exportCsvBtn" class="export-btn" aria-label="Export ke CSV">
+                            <i class="fas fa-file-csv" aria-hidden="true"></i>
+                            <span>CSV</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-pills" role="tablist" aria-label="Filter waktu riwayat">
+                <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">Semua</button>
+                <button class="filter-pill" data-filter="week" role="tab" aria-selected="false">7 Hari</button>
+                <button class="filter-pill" data-filter="month" role="tab" aria-selected="false">30 Hari</button>
+            </div>
+            <div class="history-list" id="historyList" role="feed" aria-label="Daftar riwayat penggunaan">
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyHistoryState">
+                    <i class="fas fa-inbox" style="font-size: 48px; color: #94a3b8; margin-bottom: 16px;"></i>
+                    <p style="color: #64748b; font-size: 14px;">Belum ada riwayat penggunaan</p>
+                    <p style="color: #94a3b8; font-size: 12px;">Riwayat akan muncul setelah Anda menggunakan locker</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Favorite Lockers -->
+        <div class="ranking-section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-star"></i> Loker Favorit</h2>
+            </div>
+            <div class="locker-ranking" id="lockerRanking">
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyRankingState">
+                    <i class="fas fa-star" style="font-size: 32px; color: #94a3b8; margin-bottom: 12px;"></i>
+                    <p style="color: #64748b; font-size: 13px;">Belum ada loker favorit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <!-- Socket.IO Client for Real-Time Updates -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="theme.js"></script>
+    <script src="history.js"></script>
+</body>
+
+</html>
