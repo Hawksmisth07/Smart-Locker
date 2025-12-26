@@ -116,4 +116,4 @@ Script ini akan menginisialisasi hardware (LCD, RFID, Keypad) dan mulai mendenga
 Silakan buat *Pull Request* atau *Issue* jika Anda menemukan bug atau ingin menambahkan fitur baru.
 
 ---
-Dikembangkan untuk Sistem Smart Loker Polinema.
+Project UAS Embedded System
