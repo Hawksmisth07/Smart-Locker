@@ -3014,16 +3014,23 @@ async function startServer() {
         // Verify email connection
         await verifyEmailConnection();
 
-        // Start HTTP server with Socket.IO - Listen on all interfaces for mobile access
-        server.listen(PORT, '0.0.0.0', () => {
-            console.log(`\n🚀 Server running on http://localhost:${PORT}`);
-            console.log(`📱 Mobile Access: http://192.168.40.106:${PORT}`);
-            console.log(`🔌 API: http://localhost:${PORT}/api`);
-            console.log(`⚡ Socket.IO: Real-time enabled`);
-        });
+        // Only start listening if not in Vercel serverless environment
+        if (!process.env.VERCEL) {
+            // Start HTTP server with Socket.IO - Listen on all interfaces for mobile access
+            server.listen(PORT, '0.0.0.0', () => {
+                console.log(`\n🚀 Server running on http://localhost:${PORT}`);
+                console.log(`📱 Mobile Access: http://192.168.40.106:${PORT}`);
+                console.log(`🔌 API: http://localhost:${PORT}/api`);
+                console.log(`⚡ Socket.IO: Real-time enabled`);
+            });
+        } else {
+            console.log('🚀 Running in Vercel serverless mode');
+        }
     } catch (error) {
         console.error('Failed to start server:', error);
-        process.exit(1);
+        if (!process.env.VERCEL) {
+            process.exit(1);
+        }
     }
 }
 
@@ -3360,4 +3367,21 @@ app.post('/api/hardware/locker-event', async (req, res) => {
     }
 });
 
-startServer();
+// Start server for local development
+if (!process.env.VERCEL) {
+    startServer();
+} else {
+    // For Vercel: Initialize database and Redis connections
+    (async () => {
+        try {
+            await testConnection();
+            await connectRedis();
+            console.log('🚀 Vercel: Database and Redis initialized');
+        } catch (error) {
+            console.error('Vercel initialization error:', error);
+        }
+    })();
+}
+
+// Export for Vercel serverless
+module.exports = app;
