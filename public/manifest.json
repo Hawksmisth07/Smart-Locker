@@ -1,0 +1,71 @@
+{
+    "name": "Smart Locker",
+    "short_name": "SmartLocker",
+    "description": "Manage your smart locker easily and securely",
+    "start_url": "/dashboard.html",
+    "display": "standalone",
+    "background_color": "#1E3C72",
+    "theme_color": "#1E3C72",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "id-ID",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%231E3C72' width='192' height='192' rx='32'/%3E%3Cpath d='M96 40c-17.7 0-32 14.3-32 32v16H52c-6.6 0-12 5.4-12 12v52c0 6.6 5.4 12 12 12h88c6.6 0 12-5.4 12-12v-52c0-6.6-5.4-12-12-12h-12V72c0-17.7-14.3-32-32-32zm0 16c8.8 0 16 7.2 16 16v16H80V72c0-8.8 7.2-16 16-16zm0 56c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z' fill='%2336D1DC'/%3E%3C/svg%3E",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%231E3C72' width='512' height='512' rx='80'/%3E%3Cpath d='M256 96c-50 0-90 40-90 90v48h-32c-18 0-32 14-32 32v150c0 18 14 32 32 32h244c18 0 32-14 32-32V266c0-18-14-32-32-32h-32v-48c0-50-40-90-90-90zm0 48c24 0 42 18 42 42v48h-84v-48c0-24 18-42 42-42zm0 152c24 0 44 20 44 44s-20 44-44 44-44-20-44-44 20-44 44-44z' fill='%2336D1DC'/%3E%3C/svg%3E",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "View your locker dashboard",
+            "url": "/dashboard.html",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%235B86E5' width='96' height='96' rx='16'/%3E%3Cpath d='M48 16L16 40v40h24V56h16v24h24V40L48 16z' fill='white'/%3E%3C/svg%3E",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Riwayat",
+            "short_name": "Riwayat",
+            "description": "View your usage history",
+            "url": "/history.html",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%23f093fb' width='96' height='96' rx='16'/%3E%3Cpath d='M48 16c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm0 56c-13.3 0-24-10.7-24-24s10.7-24 24-24 24 10.7 24 24-10.7 24-24 24zm4-36h-8v20l17.8 10.6 4-6.6L52 52V36z' fill='white'/%3E%3C/svg%3E",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Profile",
+            "short_name": "Profile",
+            "description": "View your profile",
+            "url": "/profile.html",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%234facfe' width='96' height='96' rx='16'/%3E%3Cpath d='M48 16c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16zm0 40c-14.7 0-32 8-32 16v8h64v-8c0-8-17.3-16-32-16z' fill='white'/%3E%3C/svg%3E",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "categories": [
+        "utilities",
+        "productivity"
+    ],
+    "screenshots": [],
+    "related_applications": [],
+    "prefer_related_applications": false
+}

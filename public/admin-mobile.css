@@ -1,0 +1,76 @@
+/* Admin Mobile Fixes - Additional Styles */
+
+/* Fix for mobile scrolling */
+@media (max-width: 480px) {
+    .page {
+        padding: 15px;
+        padding-bottom: 100px;
+    }
+
+    .top-nav {
+        padding: 12px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .nav-right {
+        gap: 8px;
+    }
+
+    .admin-profile {
+        padding: 6px 10px;
+    }
+
+    .notification-dropdown {
+        width: 280px;
+        right: -50px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .main-content {
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+    .page {
+        padding: 10px;
+        padding-bottom: 120px;
+    }
+
+    .top-nav {
+        padding: 10px;
+    }
+
+    .page-header h1 {
+        font-size: 20px;
+    }
+
+    .notification-dropdown {
+        width: 260px;
+        right: -80px;
+    }
+}
+
+/* Fix for iOS safe area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .page {
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+}

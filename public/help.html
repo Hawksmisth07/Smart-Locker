@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Bantuan dan FAQ Smart Locker">
+    <meta name="theme-color" content="#1E3C72">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="help.css">
+    <link rel="stylesheet" href="shared-optimizations.css?v=1.0">
+    <title>Smart Locker - Bantuan</title>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="particles-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="page-container">
+        <!-- Header -->
+        <header class="page-header">
+            <button class="back-btn" onclick="window.location.href='dashboard.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="page-title">
+                <i class="fas fa-question-circle"></i>
+                Bantuan
+            </h1>
+        </header>
+
+        <!-- Quick Help Cards -->
+        <div class="quick-help">
+            <div class="quick-card" onclick="scrollToSection('cara-pakai')">
+                <div class="quick-icon blue">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <span>Cara Pakai</span>
+            </div>
+            <div class="quick-card" onclick="scrollToSection('kartu-rfid')">
+                <div class="quick-icon green">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <span>Kartu RFID</span>
+            </div>
+            <div class="quick-card" onclick="scrollToSection('troubleshoot')">
+                <div class="quick-icon orange">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <span>Masalah</span>
+            </div>
+            <div class="quick-card" onclick="scrollToSection('kontak')">
+                <div class="quick-icon purple">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <span>Kontak</span>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section" id="cara-pakai">
+            <h2 class="section-title">
+                <i class="fas fa-play-circle"></i>
+                Cara Menggunakan Smart Locker
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Bagaimana cara menggunakan locker?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <ol>
+                        <li>Pastikan kartu RFID Anda sudah terdaftar di akun</li>
+                        <li>Pergi ke locker yang tersedia (lampu hijau)</li>
+                        <li>Tap kartu RFID Anda pada sensor reader</li>
+                        <li>Locker akan terbuka secara otomatis</li>
+                        <li>Simpan barang Anda dan tutup locker</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Bagaimana cara membuka locker?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Ada 2 cara membuka locker:</p>
+                    <ul>
+                        <li><strong>Dengan Kartu RFID:</strong> Tempelkan kartu yang sudah terdaftar ke sensor RFID pada
+                            locker</li>
+                        <li><strong>Dengan PIN:</strong> Jika tidak ada kartu, dapatkan PIN sementara melalui menu
+                            Profile → Sinkron Kartu → Dapatkan PIN</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Berapa lama bisa menggunakan locker?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Locker dapat digunakan maksimal <strong>24 jam</strong>. Setelah 24 jam, locker akan otomatis
+                        direset dan bisa digunakan oleh pengguna lain.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RFID Section -->
+        <div class="faq-section" id="kartu-rfid">
+            <h2 class="section-title">
+                <i class="fas fa-id-card"></i>
+                Kartu RFID
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Bagaimana cara mendaftarkan kartu RFID?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <ol>
+                        <li>Pergi ke menu <strong>Profile</strong></li>
+                        <li>Klik tombol <strong>Sinkron Kartu</strong></li>
+                        <li>Klik <strong>Mulai Sinkronisasi</strong></li>
+                        <li>Tempelkan kartu RFID ke sensor dalam 30 detik</li>
+                        <li>Kartu berhasil terdaftar!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Kartu saya hilang, bagaimana cara reset?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <ol>
+                        <li>Pergi ke menu <strong>Profile → Sinkron Kartu</strong></li>
+                        <li>Pilih <strong>Reset Kartu</strong></li>
+                        <li>Masukkan kode OTP yang dikirim ke email Anda</li>
+                        <li>Kartu lama akan dinonaktifkan</li>
+                        <li>Daftarkan kartu baru atau gunakan PIN sementara</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Troubleshoot Section -->
+        <div class="faq-section" id="troubleshoot">
+            <h2 class="section-title">
+                <i class="fas fa-tools"></i>
+                Troubleshooting
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Locker tidak bisa dibuka</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Coba langkah berikut:</p>
+                    <ul>
+                        <li>Pastikan kartu RFID sudah terdaftar</li>
+                        <li>Tempelkan kartu dengan benar ke sensor</li>
+                        <li>Coba gunakan PIN sementara sebagai alternatif</li>
+                        <li>Jika masih tidak bisa, hubungi admin</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Tidak menerima email OTP</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <ul>
+                        <li>Periksa folder <strong>Spam/Junk</strong></li>
+                        <li>Pastikan email yang dimasukkan benar</li>
+                        <li>Tunggu beberapa menit dan coba kirim ulang</li>
+                        <li>Jika masih tidak menerima, hubungi admin</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="kontak">
+            <h2 class="section-title">
+                <i class="fas fa-headset"></i>
+                Hubungi Kami
+            </h2>
+
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h4>Email</h4>
+                        <p>clasbpolinema@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    <script src="theme.js"></script>
+</body>
+
+</html>
